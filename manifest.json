@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Refresh Tabs",
+  "version": "0.2.0",
+  "description": "Automatically refresh browser tabs whose URLs match your regex rules, each on its own interval.",
+  "permissions": ["tabs", "storage", "alarms"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Auto Refresh Tabs — open settings"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

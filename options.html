@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto Refresh Tabs — Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Auto Refresh Tabs</h1>
+      <p class="subtitle">Match tab URLs with regex rules and auto-refresh them on an interval.</p>
+    </header>
+
+    <section>
+      <div class="section-header">
+        <h2>Rules</h2>
+        <button id="add-rule" class="btn btn-primary" type="button">+ Add rule</button>
+      </div>
+      <p class="section-hint">Each rule needs its own interval (minimum <code>30s</code> — browser alarm limit).</p>
+      <div id="rules-list" class="rules-list"></div>
+      <div id="empty-state" class="empty-state" hidden>
+        No rules yet. Add one to start auto-refreshing matching tabs.
+      </div>
+    </section>
+
+    <footer>
+      <span id="save-status" class="save-status">Settings save automatically.</span>
+    </footer>
+  </main>
+
+  <template id="rule-template">
+    <div class="rule">
+      <div class="rule-row">
+        <label class="toggle" title="Enable / disable rule">
+          <input type="checkbox" class="rule-enabled">
+          <span class="toggle-slider"></span>
+        </label>
+        <input type="text" class="rule-pattern"
+               placeholder="regex, e.g. ^https://www\.ibkr\.com"
+               spellcheck="false" autocomplete="off">
+        <button class="btn btn-icon rule-delete" type="button" title="Delete rule">✕</button>
+      </div>
+      <div class="rule-row rule-row-sub">
+        <div class="interval-group">
+          <label class="unit-field">
+            <input type="number" class="rule-d" min="0" step="1" placeholder="0">
+            <span class="unit-label">d</span>
+          </label>
+          <label class="unit-field">
+            <input type="number" class="rule-h" min="0" step="1" placeholder="0">
+            <span class="unit-label">h</span>
+          </label>
+          <label class="unit-field">
+            <input type="number" class="rule-m" min="0" step="1" placeholder="0">
+            <span class="unit-label">m</span>
+          </label>
+          <label class="unit-field">
+            <input type="number" class="rule-s" min="0" step="1" placeholder="0">
+            <span class="unit-label">s</span>
+          </label>
+        </div>
+        <span class="rule-error rule-error-interval" hidden></span>
+      </div>
+      <div class="rule-row rule-row-errors">
+        <span class="rule-error rule-error-pattern" hidden></span>
+      </div>
+    </div>
+  </template>
+
+  <script src="options.js"></script>
+</body>
+</html>
